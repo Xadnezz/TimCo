@@ -1,0 +1,2 @@
+# TimCo
+Retail Management System 
