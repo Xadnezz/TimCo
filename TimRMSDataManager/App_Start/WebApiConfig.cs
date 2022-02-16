@@ -16,7 +16,9 @@ namespace TimRMSDataManager
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            #if !DEBUG
+                config.Routes.IgnoreRoute("help", "help"); // Make help page, which is now unavailable on release builds, throw a 404 instead of a 500.
+            #endif
             // Web API routes
             config.MapHttpAttributeRoutes();
 

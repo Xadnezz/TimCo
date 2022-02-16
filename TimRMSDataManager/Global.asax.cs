@@ -13,7 +13,11 @@ namespace TimRMSDataManager
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+            #if DEBUG // Make help page unavailable on release builds
+                        AreaRegistration.RegisterAllAreas();
+            #endif
+           // AreaRegistration.RegisterAllAreas();
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -320,7 +321,9 @@ namespace TimRMSDataManager.Controllers
 
         // POST api/Account/Register
         [AllowAnonymous]
+        
         [Route("Register")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
